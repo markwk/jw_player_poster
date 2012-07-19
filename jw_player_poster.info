@@ -1,0 +1,6 @@
+name = JW Player Poster
+description = Add on module for JW Player to show poster uploaded with content field.
+version = CUSTOM
+core = 7.x
+dependencies[] = jw_player
+files[] = jw_player_poster.module

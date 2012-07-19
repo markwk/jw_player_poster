@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the jw_player_poster module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function jw_player_poster_install() {
+  //Ensure that jw_player_poster hooks and templates are called after jw_player
+  $weight = db_select('system', 's')
+      ->fields('s', array('weight'))
+      ->condition('name', 'jw_player', '=')
+      ->execute()
+      ->fetchField();
+
+  db_update('system')
+      ->fields(array('weight' => $weight + 1))
+      ->condition('name', 'jw_player_poster', '=')
+      ->execute();
+}
